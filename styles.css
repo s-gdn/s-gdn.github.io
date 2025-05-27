@@ -62,7 +62,7 @@ header {
 }
 
 .icon1 {
-    height: 20px;  /* Adjust logo size */
+    height: 24px;  /* Adjust logo size */
     opacity: 0; /* Start with logo invisible */
     animation: reveal 2s ease-out forwards; /* Apply the animation */
     animation-delay: 0.5s;
