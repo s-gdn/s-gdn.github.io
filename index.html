@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sam Goodwin</title>
-    {% load static %}  <!-- Add this line at the top -->
     <link rel="stylesheet" href="styles.css">
     <!-- Include Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -21,36 +20,24 @@
     <!-- Collapsible Sidebar -->
     <div id="sidebar" class="sidebar">
         <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'guide' %}">Guide</a></li>
-            <li><a href="{% url 'downloads' %}">Downloads</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Contact</a></li>
         </ul>
     </div>
 
     <header>
         <h1>Welcome to</h1>
         <div class="logo-container">
-            <img src="{% static 'pictures/logo.png' %}" alt="Logo" class="logo">
+            <img src="pictures/logo.png" alt="Logo" class="logo">
         </div>
     </header>
-
-    <div class="user-auth">
-        {% if user.is_authenticated %}
-            <p>Hello, {{ user.username }}!</p>
-            <a href="{% url 'logout' %}" class="btn">Logout</a>
-        {% else %}
-            <a href="{% url 'login' %}" class="btn">Login</a>
-            <a href="{% url 'register' %}" class="btn">Register</a>
-        {% endif %}
-    </div>
 
     <div class="program-showcase">
         <section class="feature" id="feature1">
             <h2>Train Your Personal AI</h2>
             <h3>Input any details you want into the training section and watch the AI tailor it's responses to your every need!</h3>
             <video class="feature-video" autoplay muted loop loading="lazy">
-                <source src="{% static 'videos/training1.webm' %}" type="video/mp4">
+                <source src="videos/training1.webm" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             
@@ -60,7 +47,7 @@
             <h2>Create AI Responses In One Click</h2>
             <h3>Fast and detailed responses provided by OpenAI's Assistants API. Response not up to your standards? Just tell it what you want in the training section and create another response!</h3>
             <video class="feature-video" autoplay muted loop loading="lazy">
-                <source src="{% static 'videos/createresponse.webm' %}" type="video/mp4">
+                <source src="videos/createresponse.webm" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </section>
@@ -84,6 +71,6 @@
         });
     </script>
 
-    <script src="{% static 'script.js' %}"></script>
+    <script src="script.js"></script>
 </body>
 </html>
