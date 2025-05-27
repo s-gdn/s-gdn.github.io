@@ -45,6 +45,17 @@ header {
     animation-delay: 0.5s;
 }
 
+.icon1-container {
+    margin-right: 20px;  /* Adds some space between the logo and the header text */
+}
+
+.icon1 {
+    height: 20px;  /* Adjust logo size */
+    opacity: 0; /* Start with logo invisible */
+    animation: reveal 2s ease-out forwards; /* Apply the animation */
+    animation-delay: 0.5s;
+}
+
 /* Keyframes for opacity reveal */
 @keyframes reveal {
     0% {
