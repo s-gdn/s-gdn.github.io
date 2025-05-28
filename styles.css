@@ -58,11 +58,12 @@ header {
 }
 
 .icon1-container {
-    margin-right: 20px;  /* Adds some space between the logo and the header text */
+    margin-right: 10px;  /* Adds some space between the logo and the header text */
 }
 
 .icon1 {
     height: 24px;  /* Adjust logo size */
+    filter: invert(1) drop-shadow(0 10px 10px rgba(0, 0, 0, 1));  /* Inverts the colors of the logo */
     opacity: 0; /* Start with logo invisible */
     animation: reveal 2s ease-out forwards; /* Apply the animation */
     animation-delay: 0.5s;
