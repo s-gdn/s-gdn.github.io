@@ -62,11 +62,8 @@ header {
 }
 
 .icon1 {
-    height: 24px;  /* Adjust logo size */
+    height: 30px;  /* Adjust logo size */
     filter: invert(1) drop-shadow(0 10px 10px rgba(0, 0, 0, 1));  /* Inverts the colors of the logo */
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
 }
 
 /* Keyframes for opacity reveal */
