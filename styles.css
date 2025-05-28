@@ -57,13 +57,21 @@ header {
     animation-delay: 0.5s;
 }
 
+.subtitle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
 .icon1-container {
     margin-right: 10px;  /* Adds some space between the logo and the header text */
 }
 
 .icon1 {
-    height: 30px;  /* Adjust logo size */
-    filter: invert(1) drop-shadow(0 10px 10px rgba(0, 0, 0, 1));  /* Inverts the colors of the logo */
+    width: 30px;
+    height: auto;  /* Adjust logo size */
+    filter: invert(1)
 }
 
 /* Keyframes for opacity reveal */
