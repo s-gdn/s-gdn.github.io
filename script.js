@@ -3,8 +3,9 @@
 function toggleCard() {
     document.querySelectorAll('.expand-btn').forEach(button => {
     button.addEventListener('click', () => {
-      const box = button.closest('.expand-box');
-      box.classList.toggle('expanded');
+        const card = button.closest('.expandable-card');
+        const content = card.querySelector('.card-content');
+        content.classList.toggle('show');
     });
   });
 }
