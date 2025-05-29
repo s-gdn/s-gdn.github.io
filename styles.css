@@ -132,19 +132,23 @@ header {
 }
 
 .card-header {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
-    text-align: center;
 }
 
 .card-title {
+    text-align: center;
+    flex: 1;
     font-size: 20px;
     font-weight: bold;
 }
 
 .expand-button {
+    position: absolute;
+    right: 0;
     background-color: #74b385;
     color: white;
     font-size: 20px;
