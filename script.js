@@ -1,8 +1,12 @@
 
 
 function toggleCard() {
-    const content = document.getElementById("cardContent");
-    content.classList.toggle("show");
+    document.querySelectorAll('.expand-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const box = button.closest('.expand-box');
+      box.classList.toggle('expanded');
+    });
+  });
 }
 
 
