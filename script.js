@@ -1,14 +1,6 @@
 
 
-function toggleCard() {
-    document.querySelectorAll('.expand-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const card = button.closest('.expandable-card');
-        const content = card.querySelector('.card-content');
-        content.classList.toggle('show');
-    });
-  });
-}
+
 
 
 // Get the button and sidebar
