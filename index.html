@@ -122,11 +122,11 @@
 
     <script>
     document.querySelectorAll('.expand-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const card = button.closest('.expandable-card');
-        const content = card.querySelector('.card-content');
-        content.classList.toggle('show');
-    });
+        button.addEventListener('click', () => {
+            const card = button.closest('.expandable-card');
+            const content = card.querySelector('.card-content');
+            content.classList.toggle('show');
+        });
     });
     </script>
 </body>
