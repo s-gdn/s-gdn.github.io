@@ -97,10 +97,21 @@ header {
 
 
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 2 columns for desktop */
+  gap: 20px;
+  padding: 20px;
+}
 
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
 
 .expandable-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(82, 82, 82, 0.05);
     border-radius: 20px;
     padding: 20px;
     margin: 30px auto;
