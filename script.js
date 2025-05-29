@@ -1,4 +1,12 @@
 
+
+function toggleCard() {
+    const content = document.getElementById("cardContent");
+    content.classList.toggle("show");
+}
+
+
+
 // Intersection Observer logic for videos
 const videos = document.querySelectorAll('.feature-video');
 

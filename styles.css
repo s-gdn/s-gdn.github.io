@@ -85,77 +85,6 @@ header {
 }
 
 
-/* styles.css */
-.program-showcase {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 5px;
-}
-
-.feature {
-    margin-bottom: 150px;
-    text-align: center;
-}
-
-.feature h2::before {
-    transform: scaleX(0);
-    transform-origin: bottom right;
-}
-
-.feature h2:hover::before {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-h2::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    inset: 0 0 0 0;
-    background: rgba(128, 128, 128, 0.1);
-    z-index: -1;
-    transition: transform .3s ease;
-    border-radius: 25px;
-    
-  }
-
-.feature h2 {
-    font-size: 1.75rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-    color: #c0c0c0;
-    position: relative; /* Ensures the ::before pseudo-element is positioned relative to this element */
-    text-shadow: 0 5px 7px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
-}
-
-.feature h3 {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #a0a0a0;
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 1s;
-}
-
-.feature-video {
-    width: 100%;
-    max-height: 850px;
-    object-fit: cover;
-    opacity: 0; /* Start with video hidden */
-    transition: opacity 1s ease, transform 0.3s ease; /* Smooth transition for opacity and scale*/
-    border-radius: 0px;
-    box-shadow: 0 4px 75px rgba(0, 0, 0, 1);
-}
-
-.feature-video:hover {
-    transform: scale(1.01); /* Slightly increase size */
-}
-
-
 /* Full-screen background for Vanta.js */
 #vanta-background {
     position: fixed;
@@ -165,6 +94,70 @@ h2::before {
     height: 100vh; /* Full viewport height */
     z-index: -1; /* Keep the background behind the content */
 }
+
+
+
+
+
+.expandable-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 600px;
+    color: #e2e2e2;
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.expand-button {
+    background-color: #74b385;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.expand-button:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.card-content.show {
+    max-height: 500px; /* Enough height for full content */
+    opacity: 1;
+    margin-top: 15px;
+}
+
+
+
+
+
+
+
 
 
 /* Sidebar styles */
@@ -225,165 +218,6 @@ h2::before {
 
 .sidebar-toggle:hover {
     transform: scale(1.25); /* Slightly increase size */
-}
-
-
-
-/* Button styles */
-.download-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-}
-
-.download-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #51ad6a;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 10px 10px;
-    border: 2px solid white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.download-button:hover {
-    background-color: #51ad6921;
-}
-
-.download-button img {
-    width: 50px; /* Match the actual dimensions of your icons */
-    height: 50px; /* Match the actual dimensions of your icons */
-    margin-left: 10px;
-    image-rendering: crisp-edges; /* For sharp rendering */
-    image-rendering: -webkit-optimize-contrast; /* Safari support */
-}
-
-/* Container for both free and paid sections */
-.download-section {
-    display: flex;
-    flex-direction: column; /* Stack the sections vertically */
-    gap: 50px; /* Space between sections */
-    text-align: center;
-    margin: 0 auto;
-    max-width: 750px; /* Limit the width for readability */
-    padding: 20px;
-
-}
-
-/* Styling for each version (free/paid) */
-.version {
-    padding: 20px;
-    border: 2px solid #51ad6a; /* Add a green border for visual separation */
-    border-radius: 12px;
-    background-color: #202020; /* Subtle background for the sections */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Shadow for depth */
-}
-
-.version h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 45px;
-    color: #c0c0c0;
-    position: relative; /* Ensures the ::before pseudo-element is positioned relative to this element */
-    text-shadow: 0 5px 7px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
-}
-
-.version h3 {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    line-height: 25px;
-    color: #a0a0a0;
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 1s;
-}
-
-
-/* User Guide Section with blurred background */
-.guide-section {
-    background: rgba(0, 0, 0, 0); /* Transparent background */
-    padding: 50px;
-    margin-top: 50px;
-    border-radius: 0;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.guide-content {
-    background-color: rgba(19, 19, 19, 0.9); /* Light background for readability */
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    color: #161616;
-    width: auto;
-    max-width: 1000px;
-    text-align: left;
-}
-
-.guide-content h4 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 45px;
-    color: #c0c0c0;
-    position: relative; /* Ensures the ::before pseudo-element is positioned relative to this element */
-    text-shadow: 0 5px 7px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
-}
-
-.guide-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #cccccc;
-}
-
-.guide-content p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #a7a7a7;
-}
-
-/* Image Section */
-#image-section {
-    margin: 50px 0;
-}
-
-.image {
-    width: 100%;
-    max-width: 1000px;
-    border-radius: 0px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Styling for the navigation links */
-.nav-links {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #e2e2e2;
-}
-
-.nav-links a {
-    color: #74b385;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.nav-links a:hover {
-    text-decoration: underline;
 }
 
 
@@ -516,147 +350,4 @@ h2::before {
     100% {
         opacity: 1;
     }
-}
-
-
-
-/* Login Form Styles */
-.login-form {
-    background-color: rgba(25, 25, 25, 0.4); /* Darker background for the form */
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7); /* Soft shadow for the form */
-    max-width: 450px;
-    margin: 0 auto;
-    color: #e2e2e2;
-}
-
-.login-form h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-    color: #74b385;
-    text-align: center;
-}
-
-.login-form input {
-    width: auto;
-    min-width: 400px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #202020;
-    color: #e2e2e2;
-    border: 2px solid #74b385;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.login-form input:focus {
-    border-color: #51ad6a;
-    background-color: #2a2a2a;
-    outline: none;
-}
-
-.login-form button {
-    width: auto;
-    padding: 15px;
-    background-color: #51ad6a;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-form button:hover {
-    background-color: #74b385;
-}
-
-.login-form .forgot-password {
-    font-size: 0.9rem;
-    color: #74b385;
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.login-form .forgot-password:hover {
-    text-decoration: underline;
-}
-
-/* Error Message */
-.error-message {
-    color: #f44336; /* Red color for error messages */
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* General Form Adjustments */
-input::placeholder {
-    color: #aaa;
-}
-
-input:focus::placeholder {
-    color: transparent; /* Hide placeholder when focused */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .login-form {
-        padding: 30px 20px;
-        max-width: 100%;
-    }
-}
-
-/* General styles for the user authentication section */
-.user-auth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    font-family: Arial, sans-serif;
-}
-
-/* Styling for the "Hello, username!" message when authenticated */
-.user-auth p {
-    margin-right: 20px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #bebebe;
-}
-
-/* Styling for the buttons */
-.user-auth .btn {
-    background-color: #51ad6a !important; /* Green background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding for buttons */
-    margin: 0 10px; /* Space between buttons */
-    text-decoration: none; /* Remove underline from links */
-    font-weight: 700;
-    border: 2px solid white;
-    border-radius: 8px; /* Rounded corners */
-    font-size: 1rem;
-    text-align: center;
-    display: inline-block; /* Make the links appear as buttons */
-    position: relative;
-    opacity: 0;
-    animation: reveal 1s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
-}
-
-/* Hover effect for buttons */
-.user-auth .btn:hover {
-    background-color: #45a04931 !important; /* Darker green on hover */
-}
-
-
-
-/* Ensure the buttons are spaced and aligned properly */
-.user-auth a {
-    display: inline-block;
 }
