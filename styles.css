@@ -109,6 +109,7 @@ header {
   max-width: 800px;  /* control width of content */
   width: 100%;       /* responsive */
   justify-content: center;
+  align-items: start; /* THIS LINE IS THE KEY FIX */
 }
 
 @media (max-width: 768px) {
