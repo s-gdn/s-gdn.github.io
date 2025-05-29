@@ -106,7 +106,7 @@ header {
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 columns for desktop */
   gap: 20px;
-  max-width: 800px;  /* control width of content */
+  max-width: 1200px;  /* control width of content */
   width: 100%;       /* responsive */
   justify-content: center;
   align-items: start; /* THIS LINE IS THE KEY FIX */
@@ -135,6 +135,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    text-align: center;
 }
 
 .card-title {
