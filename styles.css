@@ -129,7 +129,23 @@ header {
     align-self: start;
     backdrop-filter: blur(6px); /* subtle blurr */
     -webkit-backdrop-filter: blur(6px); /* for safari support */
+    animation: reveal 2s ease-out forwards; /* Apply the animation */
 }
+
+.expandable-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.expandable-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.expandable-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.expandable-card:nth-child(4) {
+  animation-delay: 0.7s;
+}
+/* Add more if you have more cards */
+
 
 .card-header {
     position: relative;
