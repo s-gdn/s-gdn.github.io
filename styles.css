@@ -132,7 +132,6 @@ header {
   background-color: rgba(63, 63, 63, 0.4);
   border-radius: 1.25rem;
   padding: 1.25rem;
-  color: #e2e2e2;
   box-shadow: 0 0.25rem 3.125rem rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
   overflow: hidden;
@@ -170,7 +169,11 @@ header {
   text-align: center;
   flex: 1;
   font-size: 1.25rem;
-  letter-spacing: 0.22rem;
+  letter-spacing: 0.3rem;
+  color: transparent;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
   font-weight: bold;
 }
 
