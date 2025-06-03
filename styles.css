@@ -177,11 +177,9 @@ header {
 .expand-button {
   position: absolute;
   right: 0;
-  background-color: #74b38500;
   color: white;
   font-size: 1.25rem;
   padding: 0.3125rem 0.75rem;
-  transition: transform 0.3s ease;
 }
 
 .card-content {
