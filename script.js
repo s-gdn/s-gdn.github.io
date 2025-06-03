@@ -1,6 +1,13 @@
 
 
-
+document.querySelectorAll('.expandable-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+  if (!e.target.closest('.card-content')) {
+    const content = card.querySelector('.card-content');
+    content.classList.toggle('show');
+  }
+});
+});
 
 
 // Get the button and sidebar
