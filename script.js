@@ -4,7 +4,17 @@ document.querySelectorAll('.expandable-card').forEach(card => {
   card.addEventListener('click', (e) => {
   if (!e.target.closest('.card-content')) {
     const content = card.querySelector('.card-content');
+    const button = card.querySelector('.expand-button');
+
+    const isExpanded = content.classList.contains('show');
+
     content.classList.toggle('show');
+
+    // Trigger spin animation
+    if (!isExpanded) {
+      button.classList.add('spin');
+      setTimeout(() => button.classList.remove('spin'), 500);
+    }
   }
 });
 });
