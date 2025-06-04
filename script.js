@@ -20,15 +20,10 @@ document.querySelectorAll('.expandable-card').forEach(card => {
 });
 
 
-// Get the button and sidebar
-const sidebarToggle = document.getElementById("sidebarToggle");
-const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("settingsToggle");
+const toolbar = document.getElementById("toolbar");
 
-// Add event listener for the button to toggle sidebar visibility
-sidebarToggle.addEventListener("click", () => {
-    if (sidebar.style.transform === "translateX(0%)") {
-        sidebar.style.transform = "translateX(-100%)";  // Hide the sidebar
-    } else {
-        sidebar.style.transform = "translateX(0%)";  // Show the sidebar
-    }
+toggle.addEventListener("click", () => {
+  toolbar.classList.toggle("show");
+  toggle.classList.toggle("shift-left");
 });

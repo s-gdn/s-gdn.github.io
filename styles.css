@@ -85,14 +85,83 @@ header {
   margin-top: 10px;
 }
 
-.icon1-container {
-  margin-top: 10px;
+.toolbar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top:15px;
+}
+
+/* Wrench icon */
+.icon-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.icon-wrapper.shift-left {
+  transform: translateX(calc(-50% - 80px)) rotate(360deg); /* Move left of the centered toolbar */
+}
+
+
+.icon-wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* subtle hover circle */
 }
 
 .icon1 {
-  width: 30px;
+  width: 24px;
   height: auto;
   filter: invert(1);
+  pointer-events: none; /* allows the wrapper to receive the click */
+}
+
+.toolbar-wrapper {
+  position: relative;
+  width: 100%;
+  height: 60px; /* Adjust as needed */
+}
+
+/* Center the toolbar horizontally */
+.toolbar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) scaleX(0);
+  display: flex;
+  gap: 0.5rem;
+  background-color: rgba(63, 63, 63, 0.85);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  opacity: 0;
+  transform-origin: left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.toolbar.show {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toolbar-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 #vanta-background {
@@ -205,206 +274,4 @@ header {
   max-height: 31.25rem;
   opacity: 1;
   margin-top: 0.9375rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Sidebar styles */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 350px;
-    background-color: rgba(17, 17, 17, 0.192);
-    padding-top: 20px;
-    transform: translateX(-100%); /* Initially hidden */
-    transition: transform 0.3s ease;
-    border-right: 2px solid #74b385; /* Add a white border on the right side of the sidebar */
-    box-shadow: 0 4px 50px rgba(0, 0, 0, 1);
-    z-index: 100;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 30px;
-}
-
-.sidebar li {
-    padding: 20px;
-    text-align: center;
-    
-}
-
-.sidebar li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    display: flex;
-    align-items: center;   /* Vertically centers the text */
-    justify-content: center; /* Horizontally centers the text, optional if you want it centered */
-    height: 50px;
-    border-radius: 30px;
-}
-
-.sidebar li a:hover {
-    background-color: #74b3851f;
-}
-
-/* Button to toggle sidebar */
-.sidebar-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 101; /* Make sure button stays on top of sidebar */
-    transition: transform 0.3s ease;
-}
-
-.sidebar-toggle:hover {
-    transform: scale(1.25); /* Slightly increase size */
-}
-
-
-
-/* Contact Section Styles */
-.contact-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 25px;
-    color: #e2e2e2;
-    max-width: 1000px;
-    width: auto;
-    margin: 0 auto;
-    margin-bottom: 60px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
-}
-
-/* Contact form header */
-.contact-section h5 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 45px;
-    color: #c0c0c0;
-    position: relative; /* Ensures the ::before pseudo-element is positioned relative to this element */
-    text-shadow: 0 5px 7px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
-}
-
-/* Input Fields */
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #74b385;
-    border-radius: 8px;
-    background-color: #202020;
-    color: #e2e2e2;
-    font-size: 1rem;
-    font-family: Arial, sans-serif;
-    transition: border-color 0.3s ease;
-}
-
-.contact-form input:focus, .contact-form textarea:focus {
-    border-color: #51ad6a;
-    outline: none;
-}
-
-/* Submit Button */
-.contact-form button {
-    padding: 12px 20px;
-    background-color: #74b385;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-    background-color: #51ad6a;
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-    .contact-section {
-        padding: 20px;
-    }
-
-    .contact-form input, .contact-form textarea, .contact-form button {
-        width: 100%;
-    }
-}
-
-/* Contact Information Section */
-.contact-info {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #202020;  /* Subtle background for the section */
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Shadow for depth */
-    max-width: 800px;
-    margin: 0 auto;  /* Centers the section */
-    text-align: left;
-    color: #e2e2e2;
-}
-
-.contact-info h5 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 45px;
-    color: #c0c0c0;
-    position: relative; /* Ensures the ::before pseudo-element is positioned relative to this element */
-    text-shadow: 0 5px 7px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* Start with logo invisible */
-    animation: reveal 2s ease-out forwards; /* Apply the animation */
-    animation-delay: 0.5s;
-}
-
-.contact-item {
-    margin-bottom: 20px;
-}
-
-.contact-item h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #74b385;
-}
-
-.contact-item p {
-    font-size: 1rem;
-    color: #a0a0a0;
-    margin: 0;
-}
-
-/* Reveal animation */
-@keyframes reveal {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
 }
