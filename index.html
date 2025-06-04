@@ -33,7 +33,7 @@
                     <img src="pictures/wrench.png" class="icon1" alt="Settings" />
                 </div>
                 <div class="toolbar" id="toolbar">
-                    <button class="toolbar-btn">🌙</button>
+                    <button id="theme-toggle" class="toolbar-btn">🌙</button>
                     <button class="toolbar-btn">🔔</button>
                     <button class="toolbar-btn">⚙️</button>
                 </div>
@@ -95,43 +95,8 @@
     </div>
 
 
-
-    
-
-
-    <script>
-        VANTA.BIRDS({
-          el: "#vanta-background",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          backgroundColor: 0x0,
-          color1: 0x411b52,
-          colorMode: "variance",
-          birdSize: 1.70,
-          wingSpan: 10.00,
-          speedLimit: 1.00,
-          separation: 100.00,
-          alignment: 100.00,
-          cohesion: 100.00,
-          quantity: 3.00
-        })
-        </script>
-
     <script src="script.js"></script>
 
-    <script>
-    document.querySelectorAll('.expand-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const card = button.closest('.expandable-card');
-            const content = card.querySelector('.card-content');
-            content.classList.toggle('show');
-        });
-    });
-    </script>
+    
 </body>
 </html>
