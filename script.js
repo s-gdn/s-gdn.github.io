@@ -26,11 +26,19 @@ toggle.addEventListener("click", () => {
   toggle.classList.toggle("shift-left");
 });
 
+
+
 // === Vanta Background Init ===
 let vantaEffect = null;
+let birdsVisible = true;
 
-function initVanta(isNight) {
-  if (vantaEffect) vantaEffect.destroy();
+
+function initVanta(isNight, birdsVisible) {
+  console.log("initVanta called with birdsVisible =", birdsVisible);
+  if (vantaEffect) {
+    vantaEffect.destroy();
+  }
+  
 
   vantaEffect = VANTA.BIRDS({
     el: "#vanta-background",
@@ -51,12 +59,15 @@ function initVanta(isNight) {
     separation: 100.00,
     alignment: 100.00,
     cohesion: 100.00,
-    quantity: 3.00
+    quantity: birdsVisible ? 3:-1,
   });
+
+  console.log(vantaEffect);
 }
 
-// === Theme Toggle Logic ===
+// === Settings Toggle Logic ===
 const themeToggle = document.getElementById("theme-toggle");
+
 
 // Default to night mode unless stored otherwise
 let isNight = true;
@@ -64,7 +75,7 @@ if (localStorage.getItem("theme") === "day") {
   isNight = false;
   document.body.classList.add("day-mode");
 }
-initVanta(isNight);
+initVanta(isNight, birdsVisible);
 
 
 themeToggle.addEventListener("click", () => {
@@ -73,5 +84,14 @@ themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("day-mode");
   localStorage.setItem("theme", isNight ? "night" : "day");
 
-  initVanta(isNight);
+  initVanta(isNight, birdsVisible);
+});
+
+const birdToggle = document.getElementById("bird-toggle");
+
+birdToggle.addEventListener("click", () => {
+  birdsVisible = !birdsVisible;
+  console.log("birdsVisible:", birdsVisible);
+  initVanta(isNight, birdsVisible);
+  initVanta(isNight, birdsVisible);
 });
