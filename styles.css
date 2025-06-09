@@ -1,6 +1,7 @@
 /* styles.css */
 
 :root {
+  --link-color: rgba(255, 255, 255, 0.5);
   --bg-color: #000000;
   --shadow-color: rgba(255, 255, 255, 0.0);
   --header-bg: rgba(63, 63, 63, 0.1);
@@ -12,6 +13,7 @@
 }
 
 body.day-mode {
+  --link-color: rgba(0, 0, 0, 0.5);
   --bg-color: #ffd88a;
   --shadow-color: rgba(0, 0, 0, 1);
   --header-bg: rgba(0,0,0, 0.0);
@@ -52,13 +54,18 @@ body {
   padding: 50px 20px;
 }
 
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
 /* Ensure header titles are centered text only (not pushed right) */
 h1, h2 {
   white-space: nowrap;
 }
 
 h1 {
-  font-size: clamp(3rem, 6vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 700;
@@ -99,9 +106,15 @@ h2 {
 
 
 .header-wrapper {
-  position: relative; /* to contain absolute children */
-  display: inline-block; /* shrinkwrap to header size */
+  position: relative;
+  display: block; /* allows it to fill 100% if needed */
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
+
 
 header {
   display: flex;
@@ -190,6 +203,7 @@ header {
   animation: fadeInBox 4s ease forwards;
   animation-delay: 0.5s; /* after h1 & h2 animations */
   z-index: -1; /* behind header text */
+  
 }
 
 @keyframes fadeInBox {
@@ -350,7 +364,6 @@ header {
   color: var(--text-color);
   box-shadow: 0 0.25rem 3.125rem rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
-  overflow: hidden;
   align-self: start;
   backdrop-filter: blur(0.375rem);
   -webkit-backdrop-filter: blur(0.375rem);
@@ -410,14 +423,16 @@ header {
 
 .card-content {
   max-height: 0;
-  overflow: hidden;
+  text-align: center;
   margin-top: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
   opacity: 0;
   transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 .card-content.show {
-  max-height: 31.25rem;
+  max-height: 100.25rem;
   opacity: 1;
   margin-top: 0.9375rem;
 }
