@@ -31,15 +31,21 @@ toggle.addEventListener("click", () => {
 // === Vanta Background Init ===
 let vantaEffect = null;
 let birdsVisible = true;
+const vantaContainer = document.getElementById("vanta-background");
 
-
-function initVanta(isNight, birdsVisible) {
-  console.log("initVanta called with birdsVisible =", birdsVisible);
+function initVanta(isNight) {
   if (vantaEffect) {
     vantaEffect.destroy();
+    vantaEffect = null;
   }
-  
 
+  if (!birdsVisible) {
+    // Just set a solid background when birds are hidden
+    vantaContainer.style.background = isNight ? "#000000" : "#ffd88a";
+    return;
+  }
+
+  // Otherwise, show the animated background
   vantaEffect = VANTA.BIRDS({
     el: "#vanta-background",
     mouseControls: true,
@@ -49,8 +55,8 @@ function initVanta(isNight, birdsVisible) {
     minWidth: 200.00,
     scale: 1.00,
     scaleMobile: 1.00,
-    backgroundColor: isNight ? 0x000000 :0xffd88a,
-    color1: isNight ? 0x411b52 : 0x000000,
+    backgroundColor: isNight ? 0x000000 : 0xffd88a,
+    color1: isNight ? 0x00ffd5 : 0x000000,
     color2: isNight ? 0x00ffd5 : 0x000000,
     colorMode: "variance",
     birdSize: 1.70,
@@ -59,15 +65,15 @@ function initVanta(isNight, birdsVisible) {
     separation: 100.00,
     alignment: 100.00,
     cohesion: 100.00,
-    quantity: birdsVisible ? 3:-1,
+    quantity: 3,
   });
 
-  console.log(vantaEffect);
+  // Clear static background in case it was previously set
+  vantaContainer.style.background = "";
 }
 
 // === Settings Toggle Logic ===
 const themeToggle = document.getElementById("theme-toggle");
-
 
 // Default to night mode unless stored otherwise
 let isNight = true;
@@ -75,23 +81,19 @@ if (localStorage.getItem("theme") === "day") {
   isNight = false;
   document.body.classList.add("day-mode");
 }
-initVanta(isNight, birdsVisible);
-
+initVanta(isNight);
 
 themeToggle.addEventListener("click", () => {
   isNight = !isNight;
-
   document.body.classList.toggle("day-mode");
   localStorage.setItem("theme", isNight ? "night" : "day");
-
-  initVanta(isNight, birdsVisible);
+  initVanta(isNight);
 });
 
 const birdToggle = document.getElementById("bird-toggle");
-
 birdToggle.addEventListener("click", () => {
   birdsVisible = !birdsVisible;
   console.log("birdsVisible:", birdsVisible);
-  initVanta(isNight, birdsVisible);
-  initVanta(isNight, birdsVisible);
+  initVanta(isNight);
 });
+
