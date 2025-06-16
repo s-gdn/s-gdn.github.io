@@ -406,6 +406,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  text-align: left;
 }
 
 .skill img {
