@@ -386,6 +386,60 @@ header {
   transform: scale(0.98);
 }
 
+.expandable-card h4{
+  margin-top: 1.25rem;
+}
+
+
+.experience-history ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.skill span {
+  width: 100px;
+  font-weight: 600;
+}
+
+.skill-bar {
+  flex-grow: 1;
+  height: 1rem;
+  border-radius: 0.5rem;
+  background: lightgray;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0%;
+  border-radius: inherit;
+  transition: width 0.5s ease;
+  background: green; /* Will be overridden by JS lerp color */
+}
+
+
+
 .card-header {
   display: flex;
   justify-content: center;

@@ -12,7 +12,15 @@ document.querySelectorAll('.expandable-card').forEach(card => {
       if (!isExpanded) {
         button.classList.add('spin');
         setTimeout(() => button.classList.remove('spin'), 500);
+
+        animateSkillBars(); // Run animation when expanding
+      } else {
+        // Reset skill bars when collapsing
+        card.querySelectorAll(".skill-bar .fill").forEach(fill => {
+          fill.style.width = "0%";
+        });
       }
+
     }
   });
 });
@@ -25,6 +33,64 @@ toggle.addEventListener("click", () => {
   toolbar.classList.toggle("show");
   toggle.classList.toggle("shift-left");
 });
+
+
+// === Proficeincy Bars === 
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function lerpColorHex(hex1, hex2, t) {
+  const c1 = hex1.match(/\w\w/g).map(c => parseInt(c, 16));
+  const c2 = hex2.match(/\w\w/g).map(c => parseInt(c, 16));
+  const r = Math.round(lerp(c1[0], c2[0], t));
+  const g = Math.round(lerp(c1[1], c2[1], t));
+  const b = Math.round(lerp(c1[2], c2[2], t));
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function getProficiencyColor(percent) {
+  if (percent <= 50) {
+    const t = percent / 50;
+    return lerpColorHex("#ff3e3e", "#ffcc00", t);
+  } else {
+    const t = (percent - 50) / 50;
+    return lerpColorHex("#ffcc00", "#00cc66", t);
+  }
+}
+
+// Animate bars when card expands
+function animateSkillBars() {
+  document.querySelectorAll(".skill-bar").forEach(bar => {
+    const level = parseInt(bar.dataset.level);
+    const color = getProficiencyColor(level);
+
+    let fill = bar.querySelector(".fill");
+    if (!fill) {
+      fill = document.createElement("div");
+      fill.classList.add("fill");
+      fill.style.position = "absolute";
+      fill.style.top = "0";
+      fill.style.left = "0";
+      fill.style.bottom = "0";
+      fill.style.width = `0%`;
+      fill.style.background = color;
+      fill.style.borderRadius = "inherit";
+      fill.style.transition = "width 1s ease, background 1s ease";
+      bar.appendChild(fill);
+    }
+
+    // Animate after slight delay to ensure transition
+    requestAnimationFrame(() => {
+      fill.style.width = `${level}%`;
+      fill.style.background = getProficiencyColor(level);
+    });
+  });
+}
+
+
+
+
 
 
 
