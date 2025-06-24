@@ -25,6 +25,18 @@ document.querySelectorAll('.expandable-card').forEach(card => {
   });
 });
 
+// Run once on page load:
+document.querySelectorAll('.nested-card').forEach(card => {
+  const header = card.querySelector('.nested-header');
+  const content = card.querySelector('.nested-content');
+  const btn     = card.querySelector('.nested-button');
+
+  header.addEventListener('click', () => {
+    const isOpen = content.classList.toggle('show');
+    btn.textContent = isOpen ? '−' : '+';
+  });
+});
+
 // === Toolbar Toggle Logic ===
 const toggle = document.getElementById("settingsToggle");
 const toolbar = document.getElementById("toolbar");

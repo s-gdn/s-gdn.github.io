@@ -484,10 +484,78 @@ header {
   margin-right: 1rem;
   opacity: 0;
   transition: max-height 0.5s ease, opacity 0.5s ease;
+  overflow: hidden; /* this fixes height difference in cards when card has no <p> content */
 }
 
 .card-content.show {
-  max-height: 100.25rem;
+  max-height: 200.25rem;
   opacity: 1;
   margin-top: 0.9375rem;
 }
+
+
+
+/* ───────────────────────────────────────────────────────── */
+/* Nested cards inside your main expandable-card:           */
+/* ───────────────────────────────────────────────────────── */
+
+.nested-card {
+  cursor: pointer;
+  background-color: var(--card-bg);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+  margin-top: 1rem;
+}
+
+.nested-card:hover {
+  transform: scale(1.01);
+  background-color: rgba(134, 134, 134, 0.5);
+}
+
+.nested-card:active {
+  transform: scale(0.98);
+}
+
+.nested-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  position: relative;
+}
+
+.nested-title {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  color: var(--card-text);
+  font-weight: bold;
+}
+
+.nested-button {
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Hidden by default: */
+.nested-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+/* When you add .show to expand: */
+.nested-content.show {
+  max-height: 100vh;   /* large enough to show any content */
+  opacity: 1;
+  margin-top: 0.75rem;
+}
+
