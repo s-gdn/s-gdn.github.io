@@ -25,6 +25,21 @@ document.querySelectorAll('.expandable-card').forEach(card => {
   });
 });
 
+//Video fullscreen
+document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".project-video");
+
+    video.addEventListener("click", () => {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) { // Safari
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { // IE11
+        video.msRequestFullscreen();
+      }
+    });
+  });
+
 // Run once on page load:
 document.querySelectorAll('.nested-card').forEach(card => {
   const header = card.querySelector('.nested-header');
@@ -117,11 +132,7 @@ function initVanta(isNight) {
     vantaEffect = null;
   }
 
-  if (!birdsVisible) {
-    // Just set a solid background when birds are hidden
-    vantaContainer.style.background = isNight ? "#000000" : "#ffd88a";
-    return;
-  }
+
 
   // Otherwise, show the animated background
   vantaEffect = VANTA.BIRDS({
@@ -133,10 +144,11 @@ function initVanta(isNight) {
     minWidth: 200.00,
     scale: 1.00,
     scaleMobile: 1.00,
-    backgroundColor: isNight ? 0x000000 : 0xffd88a,
-    color1: isNight ? 0x00ffd5 : 0x000000,
-    color2: isNight ? 0x00ffd5 : 0x000000,
-    colorMode: "variance",
+    backgroundColor: 0x000000,
+    backgroundAlpha: 0.00,
+    color1: isNight ? 0x00ffd5 : 0x0,
+    color2: isNight ? 0x00ffd5 : 0xff4b00,
+    colorMode: "lerp",
     birdSize: 1.70,
     wingSpan: 10.00,
     speedLimit: 1.00,
@@ -146,9 +158,39 @@ function initVanta(isNight) {
     quantity: 3,
   });
 
+    if (!birdsVisible) {
+    vantaEffect.destroy();
+    return;
+  }
+
   // Clear static background in case it was previously set
   vantaContainer.style.background = "";
 }
+
+const videoDay = document.getElementById("video-day");
+const videoNight = document.getElementById("video-night");
+
+function transitionBG(isNight) {
+  if (isNight) {
+    // Show night video by removing bottom clip
+    videoNight.style.transition = 'clip-path 1s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    videoNight.style.clipPath = 'inset(0 0 0 0)';  // fully visible
+
+    // Hide day video by clipping from bottom
+    videoDay.style.transition = 'clip-path 1s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    videoDay.style.clipPath = 'inset(0 0 0 0)';  // hidden bottom-up
+  } else {
+    // Show day video by removing bottom clip
+    videoDay.style.transition = 'clip-path 1s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    videoDay.style.clipPath = 'inset(0 0 0 0)';  // fully visible
+
+    // Hide night video by clipping from bottom
+    videoNight.style.transition = 'clip-path 1s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    videoNight.style.clipPath = 'inset(0 0 100% 0)';  // hidden bottom-up
+  }
+}
+
+
 
 // === Settings Toggle Logic ===
 const themeToggle = document.getElementById("theme-toggle");
@@ -159,13 +201,18 @@ if (localStorage.getItem("theme") === "day") {
   isNight = false;
   document.body.classList.add("day-mode");
 }
+transitionBG(isNight);
 initVanta(isNight);
+
+
 
 themeToggle.addEventListener("click", () => {
   isNight = !isNight;
   document.body.classList.toggle("day-mode");
   localStorage.setItem("theme", isNight ? "night" : "day");
+  transitionBG(isNight);
   initVanta(isNight);
+  
 });
 
 const birdToggle = document.getElementById("bird-toggle");

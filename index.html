@@ -12,7 +12,17 @@
 </head>
 <body>
     <!-- Background container for Vanta effect -->
-    <div id="vanta-background"></div>
+    <div class="background-wrapper">
+        <div id="video-wrapper">
+            <video id="video-day" autoplay muted loop>
+                <source src="videos/sunrise.mp4" type="video/mp4" />
+            </video>
+            <video id="video-night" autoplay muted loop style="clip-path: inset(100% 0 0 0);">
+                <source src="videos/night.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div id="vanta-background"></div>
+    </div>
 
     
     <div class="header-wrapper">
@@ -25,7 +35,9 @@
                 <h1>Sam Goodwin</h1>
         
                 <div class="logo-container">
-                    <img src="pictures/logo.png" alt="Logo" class="logo">
+                    <a href="https://ai-inbox-web-production.up.railway.app/" target="_blank" rel="noopener noreferrer">
+                        <img src="pictures/logo.png" alt="Project Logo" class="logo" />
+                    </a>
                 </div>
 
                 <h2>- SOFTWARE DEVELOPER -</h2>
@@ -55,24 +67,95 @@
     <!-- BOX GRID -->
     <div class="grid-wrapper">
         <div class="grid-container">
-            <!--BOX 1-->
-            <div class="expandable-card">
-                <div class="card-header">
-                    <span class="card-title">About Me</span>
-                    <span class="expand-button">+</span>
+            <div class="column">
+                <!--BOX 1-->
+                <div class="expandable-card">
+                    <div class="card-header">
+                        <span class="card-title">About Me</span>
+                        <span class="expand-button">+</span>
+                    </div>
+                    <div class="card-content about-me">
+                        <p>
+                            <br />I'm a <strong>software developer from the UK</strong> with over a decade of experience — coding since childhood on a Windows XP machine. <br /><br />
+                            Over the years, I've worked on a wide range of projects, both <strong>independently</strong> and <strong>collaboratively</strong> in small teams. Whether it's building tools from scratch or refining existing systems, I thrive on solving problems creatively.<br /><br />
+                            Both <strong>self-taught</strong> and <strong>college educated</strong>, deeply committed to continuous learning, and always looking for ways to sharpen my skills. My passion and dedication shows in everything I build.<br /><br />
+
+                            I enjoy many activities as well as coding; I've been producing music for many years, I enjoy rock-climbing, snowboarding, playing chess, and being outdoors. <br /><br />
+
+                            If you need a dedicated problem solver, capable of working remote or on location, contact me at: <a href="mailto:sampgoodwin@gmail.com" target="_blank" rel="noopener noreferrer">sampgoodwin@gmail.com</a>.
+                        </p>        
+                    </div>
                 </div>
-                <div class="card-content about-me">
-                    <p>
-                        <br />I'm a <strong>software developer from the UK</strong> with over a decade of experience — coding since childhood on a Windows XP machine. <br /><br />
-                        Over the years, I've worked on a wide range of projects, both <strong>independently</strong> and <strong>collaboratively</strong> in small teams. Whether it's building tools from scratch or refining existing systems, I thrive on solving problems creatively.<br /><br />
-                        Both <strong>self-taught</strong> and <strong>college educated</strong>, deeply committed to continuous learning, and always looking for ways to sharpen my skills. My passion and dedication show in everything I build.<br /><br />
+                <!--BOX 3-->
+            <div class="expandable-card">
+            <div class="card-header">
+                <span class="card-title">Projects</span>
+                <span class="expand-button">+</span>
+            </div>
+            <div class="card-content">
+                <div class="card-inner">
 
-                        I enjoy many activities as well as coding; I've been producing music for many years, I enjoy rock-climbing, snowboarding, playing chess, and being outdoors. <br /><br />
+                
 
-                        If you need a dedicated problem solver, capable of working remote or on location, contact me at: <a href="mailto:sampgoodwin@gmail.com">sampgoodwin@gmail.com</a>.
-                    </p>        
+                <!-- NESTED CARDS: -->
+                <div class="nested-card">
+                    <div class="nested-header">
+                    <span class="nested-title">AI Inbox Assistant</span>
+                    <span class="nested-button">+</span>
+                    </div>
+                    <div class="nested-content">
+                        <!-- Logo -->
+                        <div class="logo-container">
+                            <a href="https://ai-inbox-web-production.up.railway.app/" target="_blank" rel="noopener noreferrer">
+                                 <img src="pictures/logo.png" alt="Project Logo" class="logo" />
+                            </a>
+                            
+                        </div>
+
+                        <!-- Video -->
+                        <div class="project-video-container">
+                            <video class="project-video" autoplay muted loop playsinline loading="lazy">
+                            <source src="videos/createresponse.webm" type="video/mp4" />
+                            Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <p>
+                            _______________________________________________________________________________<br /><br />
+                            <a href="https://ai-inbox-web-production.up.railway.app/" target="_blank" rel="noopener noreferrer"><strong>AI Inbox</strong></a>📩 is your personal email assistant, able to compose high quality emails in just a couple seconds!
+
+                            This program uses IMAP protocol, Gmail API and Outlook API to retrieve your inbox from any email provider of your choice, 
+                            which can then be viewed in the built in browser. <br /><br />
+
+                            The training section of the program allows you to train the AI to your liking, giving it price lists, contact info, how it should sound, or anything you might want.
+                            It uses the selected email as context, as well as your training data to compose a perfect email exactly how you want everytime, in just one click.
+                            Of course you can also edit the email yourself, or compose your own. Then, using SMTP protocol, the email is sent to your chosen recipient.<br /><br />
+
+                            Upon signing up to the website, you will be given some free credits used for email generation. If you purchase monthly premium on the website (Stripe checkout implementation), you will be give more credits each month, as well as access to more training features.<br /><br />
+
+                            For more info, <a href="https://ai-inbox-web-production.up.railway.app/" target="_blank" rel="noopener noreferrer">visit the website</a>.
+                            <br /><br />
+                            _______________________________________________________________________________<br /><br />
+
+                            <strong>PLEASE NOTE:</strong> Please do not purchase now. You will be given a premium account, but the program is currently not available for download until I find a good way to host the download.<br /><br />
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nested-card">
+                    <div class="nested-header">
+                    <span class="nested-title">Portfolio Website</span>
+                    <span class="nested-button">+</span>
+                    </div>
+                    <div class="nested-content">
+                    <p>Details about Portfolio Website...</p>
+                    </div>
+                </div>
+
                 </div>
             </div>
+            </div>
+            </div>
+            <div class="column">
             <!--BOX 2-->
             <div class="expandable-card">
                 <div class="card-header">
@@ -245,37 +328,8 @@
                     
                 </div>
             </div>
-            <!--BOX 3-->
-            <div class="expandable-card">
-                <div class="card-header">
-                    <span class="card-title">Projects</span>
-                    <span class="expand-button">+</span>
-                </div>
-                <div class="card-content">
-                    <div class="card-inner">
-                        <!-- NESTED CARDS: -->
-                        <div class="nested-card">
-                        <div class="nested-header">
-                            <span class="nested-title">AI Inbox Assistant</span>
-                            <span class="nested-button">+</span>
-                        </div>
-                        <div class="nested-content">
-                            <p>Details about AI Inbox Assistant...</p>
-                        </div>
-                        </div>
+            
 
-                        <div class="nested-card">
-                        <div class="nested-header">
-                            <span class="nested-title">Portfolio Website</span>
-                            <span class="nested-button">+</span>
-                        </div>
-                        <div class="nested-content">
-                            <p>Details about Portfolio Website...</p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--BOX 4-->
             <div class="expandable-card">
                 <div class="card-header">
@@ -285,6 +339,7 @@
                 <div class="card-content">
                     <p>This is the hidden content that becomes visible when the card expands. You can put anything here: text, links, images, etc.</p>
                 </div>
+            </div>
             </div>
         </div>
     </div>

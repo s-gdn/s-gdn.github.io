@@ -9,6 +9,7 @@
   --card-bg: rgba(63, 63, 63, 0.4);
   --card-text: rgba(190, 190, 190, 0.616);
   --accent-color: #74b385;
+  --nested-outline: rgba(255, 255, 255, 0.822);
   --invert-value: 1;
 }
 
@@ -20,7 +21,8 @@ body.day-mode {
   --text-color: #000000;
   --card-bg: rgba(199, 199, 199, 0.4);
   --card-text: rgba(0, 0, 0, 0.616);
-  --accent-color: #88d1a0;
+  --accent-color: #e2963e;
+  --nested-outline: rgba(32, 32, 32, 0.822);
   --invert-value: 0;
 }
 
@@ -43,7 +45,7 @@ body.day-mode #theme-toggle .moon {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: system-ui, Roboto;
   background-color: var(--bg-color);
   color: var(--text-color);
   display: flex;
@@ -52,11 +54,55 @@ body {
   justify-content: flex-start;
   min-height: 100vh;
   padding: 50px 20px;
+  word-spacing: 0.15rem;
+  line-height: 1.4;
+}
+
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2; /* behind Vanta and content */
+}
+
+#video-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 110vw;
+  height: 110vh;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: -2;
+  filter: blur(15px);
+  pointer-events: none;
+}
+
+#video-wrapper video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s cubic-bezier(0.25, 0.1, 0.25, 1); /* ease out slow */
+}
+
+#vanta-background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1; /* in front of video, behind content */
 }
 
 a {
   color: var(--link-color);
   text-decoration: underline;
+  font-weight: 600;
+  pointer-events: auto;
 }
 
 /* Ensure header titles are centered text only (not pushed right) */
@@ -229,6 +275,10 @@ header {
   animation-delay: 0.5s;
 }
 
+.logo:hover {
+  transform: scale(1.01);
+}
+
 .subtitle-container {
   padding: 0 5vw;
   display: flex;
@@ -341,20 +391,45 @@ header {
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(18.75rem, 1fr));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   gap: 1.25rem;
   max-width: 75rem;
   width: 100%;
-  padding: 0 1rem; /* Prevent cards from touching screen edges */
+  padding: 0 1rem;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1 1 18.75rem; /* Flex grow/shrink, min width */
+  min-width: 18.75rem;
+}
+
+/* Make cards inside columns fill the column width */
+.column .expandable-card {
+  width: 100%;
+}
+
+/* Responsive: stack columns vertically */
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column {
+    flex-basis: auto;  /* Override to avoid fixed height */
+    width: 100%;
+    max-width: 40rem;
   }
 }
+
+
 
 .expandable-card {
   cursor: pointer;
@@ -507,10 +582,11 @@ header {
   color: var(--text-color);
   transition: all 0.3s ease-in-out;
   margin-top: 1rem;
+
+  border: 1px solid var(--nested-outline); /* adjust color & opacity as needed */
 }
 
 .nested-card:hover {
-  transform: scale(1.01);
   background-color: rgba(134, 134, 134, 0.5);
 }
 
@@ -546,7 +622,7 @@ header {
 /* Hidden by default: */
 .nested-content {
   max-height: 0;
-  overflow: hidden;
+  overflow: visible;
   opacity: 0;
   margin-top: 0;
   transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
@@ -557,5 +633,26 @@ header {
   max-height: 100vh;   /* large enough to show any content */
   opacity: 1;
   margin-top: 0.75rem;
+}
+
+
+
+.project-video-container {
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-video {
+  max-width: 100%;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-video:hover {
+  transform: scale(1.02);
 }
 
