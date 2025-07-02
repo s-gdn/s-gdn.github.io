@@ -8,16 +8,16 @@
     <!-- Include Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <!-- Include Vanta.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="/vanta.birds.js"></script>
 </head>
 <body>
     <!-- Background container for Vanta effect -->
     <div class="background-wrapper">
         <div id="video-wrapper">
-            <video id="video-day" autoplay muted loop>
+            <video id="video-day" autoplay muted loop playsinline>
                 <source src="videos/sunrise.mp4" type="video/mp4" />
             </video>
-            <video id="video-night" autoplay muted loop style="clip-path: inset(100% 0 0 0);">
+            <video id="video-night" autoplay muted loop playsinline style="clip-path: inset(100% 0 0 0);">
                 <source src="videos/night.mp4" type="video/mp4" />
             </video>
         </div>
