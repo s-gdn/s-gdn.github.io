@@ -538,17 +538,38 @@ header {
 }
 
 .expand-button {
-  pointer-events: none;
   position: absolute;
+  top: 50%;
   right: 0;
-  color: var(--text-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
   font-size: 1.25rem;
-  padding: 0.3125rem 0.75rem;
+  pointer-events: none;
+  user-select: none;
+
+  transform: translateY(-50%);
+  transform-origin: center center;
+
+  margin-right: 0.75rem;
+
+  /* tweak vertical positioning to fix visual offset */
+  padding-bottom: 5px; /* or margin-top: 1px; experiment to find perfect value */
 }
 
+
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
 
 .expand-button.spin {
@@ -590,10 +611,6 @@ header {
   border: 1px solid var(--nested-outline); /* adjust color & opacity as needed */
 }
 
-.nested-card.hover {
-  background-color: rgba(134, 134, 134, 0.5);
-}
-
 
 .nested-header {
   display: flex;
@@ -616,15 +633,37 @@ header {
   font-weight: bold;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  margin-top: 0.2rem;
 }
 
 .nested-button {
-  pointer-events: none;
   position: absolute;
+  top: 50%;
   right: 0;
-  font-size: 1rem;
-  padding: 0.25rem 0.5rem;
-  margin-left: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  font-size: 1.25rem;
+  pointer-events: none;
+  user-select: none;
+
+  transform: translateY(-50%);
+  transform-origin: center center;
+
+  margin-right: 0.75rem;
+  margin-top: 0.1rem;
+
+  /* tweak vertical positioning to fix visual offset */
+  padding-bottom: 0.3rem; /* or margin-top: 1px; experiment to find perfect value */
+}
+
+.nested-button.spin {
+  animation: spin 0.5s ease;
 }
 
 /* Hidden by default: */

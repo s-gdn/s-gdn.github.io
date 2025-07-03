@@ -61,8 +61,9 @@ document.querySelectorAll('.expandable-card').forEach(card => {
   if (isTouch) {
     // Simulate hover for mobile (only while finger is down)
     card.addEventListener('touchstart', () => {
+      
       card.classList.add('hover');
-    });
+    }, { passive: true });
 
     card.addEventListener('touchend', () => {
       card.classList.remove('hover');
@@ -93,11 +94,13 @@ document.querySelectorAll('.nested-card').forEach(card => {
   header.addEventListener('click', () => {
     const isOpen = content.classList.contains('show');
     content.classList.toggle('show');
-    btn.textContent = isOpen ? '−' : '+';
+    if(!isOpen)
+    {
+      btn.classList.add('spin');
+      setTimeout(() => btn.classList.remove('spin'), 500);
+    }
+
   });
-
-
-
 
 });
 
