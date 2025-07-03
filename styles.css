@@ -459,9 +459,7 @@ header {
   background-color: rgba(134, 134, 134, 0.5);
 }
 
-.expandable-card:active {
-  transform: scale(0.98);
-}
+
 
 .expandable-card h4{
   margin-top: 3.25rem;
@@ -524,6 +522,10 @@ header {
   align-items: center;
   gap: 0.625rem;
   position: relative;
+}
+
+.card-header:active {
+  transform: scale(0.98);
 }
 
 .card-title {
@@ -602,6 +604,10 @@ header {
   align-items: center;
   gap: 0.625rem;
   position: relative;
+}
+
+.nested-header:active {
+  transform: scale(0.95);
 }
 
 .nested-title {
