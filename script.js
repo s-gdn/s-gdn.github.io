@@ -29,35 +29,44 @@ function animateSkillBars() {
 
 
 // === Expandable Card Logic ===
-let pointerStartY = 0;
-
 document.querySelectorAll('.expandable-card').forEach(card => {
+  const header = card.querySelector('.card-header');
   const content = card.querySelector('.card-content');
   const button = card.querySelector('.expand-button');
 
-  card.addEventListener('pointerdown', (e) => {
-    pointerStartY = e.clientY || e.touches?.[0]?.clientY || 0;
-  });
+  header.addEventListener('click', () => {
+    const isExpanded = content.classList.contains('show');
+    content.classList.toggle('show');
 
-  card.addEventListener('pointerup', (e) => {
-    const pointerEndY = e.clientY || e.changedTouches?.[0]?.clientY || 0;
-    const distance = Math.abs(pointerEndY - pointerStartY);
-
-    // Prevent accidental triggers while scrolling
-    if (distance < 5 && !e.target.closest('.card-content')) {
-      const isExpanded = content.classList.contains('show');
-      content.classList.toggle('show');
-
+      // Trigger spin animation on expand
       if (!isExpanded) {
         button.classList.add('spin');
         setTimeout(() => button.classList.remove('spin'), 500);
-        animateSkillBars();
+
+        setTimeout(() => {
+          animateSkillBars();
+        }, 50);
       } else {
+        // Reset skill bars when collapsing
         card.querySelectorAll(".skill-bar .fill").forEach(fill => {
           fill.style.width = "0%";
         });
       }
-    }
+
+    
+  });
+});
+
+// Nested
+document.querySelectorAll('.nested-card').forEach(card => {
+  const header = card.querySelector('.nested-header');
+  const content = card.querySelector('.nested-content');
+  const btn     = card.querySelector('.nested-button');
+
+  header.addEventListener('click', () => {
+    const isOpen = content.classList.contains('show');
+    content.classList.toggle('show');
+    btn.textContent = isOpen ? '−' : '+';
   });
 });
 
@@ -76,17 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-// Run once on page load:
-document.querySelectorAll('.nested-card').forEach(card => {
-  const header = card.querySelector('.nested-header');
-  const content = card.querySelector('.nested-content');
-  const btn     = card.querySelector('.nested-button');
 
-  header.addEventListener('click', () => {
-    const isOpen = content.classList.toggle('show');
-    btn.textContent = isOpen ? '−' : '+';
-  });
-});
 
 // === Toolbar Toggle Logic ===
 const toggle = document.getElementById("settingsToggle");
