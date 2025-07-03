@@ -594,9 +594,6 @@ header {
   background-color: rgba(134, 134, 134, 0.5);
 }
 
-.nested-card:active {
-  transform: scale(0.98);
-}
 
 .nested-header {
   display: flex;
