@@ -565,7 +565,7 @@ header {
 }
 
 .card-content.show {
-  max-height: 200.25rem;
+  max-height: 400.25rem;
   opacity: 1;
   margin-top: 0.9375rem;
 }
@@ -627,7 +627,7 @@ header {
 /* Hidden by default: */
 .nested-content {
   max-height: 0;
-  overflow: visible;
+  overflow: hidden;
   opacity: 0;
   margin-top: 0;
   transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;

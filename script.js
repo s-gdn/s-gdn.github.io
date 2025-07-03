@@ -43,7 +43,9 @@ document.querySelectorAll('.expandable-card').forEach(card => {
         button.classList.add('spin');
         setTimeout(() => button.classList.remove('spin'), 500);
 
-        animateSkillBars(); // Run animation when expanding
+        setTimeout(() => {
+          animateSkillBars();
+        }, 50);
       } else {
         // Reset skill bars when collapsing
         card.querySelectorAll(".skill-bar .fill").forEach(fill => {

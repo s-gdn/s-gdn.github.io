@@ -82,7 +82,7 @@
 
                             I enjoy many activities as well as coding; I've been producing music for many years, I enjoy rock-climbing, snowboarding, playing chess, and being outdoors. <br /><br />
 
-                            If you need a dedicated problem solver, capable of working remote or on location, contact me at: <a href="mailto:sampgoodwin@gmail.com" target="_blank" rel="noopener noreferrer">sampgoodwin@gmail.com</a>.
+                            If you need a dedicated problem solver, capable of working remote or on location, contact me at: <a href="mailto:sampgoodwin@gmail.com" target="_blank" rel="noopener noreferrer">sampgoodwin@gmail.com</a>.<br /><br />
                         </p>        
                     </div>
                 </div>
@@ -143,11 +143,95 @@
 
                 <div class="nested-card">
                     <div class="nested-header">
-                    <span class="nested-title">Portfolio Website</span>
+                    <span class="nested-title">Unity Projects</span>
                     <span class="nested-button">+</span>
                     </div>
                     <div class="nested-content">
-                    <p>Details about Portfolio Website...</p>
+                    <h4>
+                        All of the following projects were created in the Unity game engine.<br /><br />
+                    </h4>
+
+                    <!--Procedural World-->
+                    <h3>Procedural Level Design</h3>
+                    <!-- Video -->
+                        <div class="project-video-container">
+                            <video class="project-video" autoplay muted loop playsinline loading="lazy">
+                            <source src="videos/world.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    <p>
+                        I created this project to put my level design abilities to the test. <br /><br />
+
+                        It uses Gaia to create large, procedural, realistic landscapes, which can be very resource intensive if not done right.<br /><br />
+
+                        So I implemented a system which splits up the large terrain into multiple regions. The regions closest to the player camera 
+                        are loaded in full resolution, but the regions past a certain distance are created as "imposter" regions, 
+                        being at a lower texture and mesh resolution. These regions are updated dynamically as you move around the map, unloading 
+                        imposter terrain as you get closer, and replacing it with the higher resolution terrain.<br /><br />
+
+                        Apart from that, I am also using Unity's HDRP water to render the ocean and rivers, with underwater caustic effects for when the 
+                        player is underwater.<br /><br />
+
+                        I have also included terrain objects such as trees, rocks, mushrooms, and soon grass, when I can find a texture that doesn't affect performance too much.
+                        These objects are placed procedurally depending on terrain biome, height of terrain, and angle of terrain, ensuring objects are placed realistically.
+                        All current objects have an LOD system, meaning the further away from the object you are, the smaller resolution the mesh is, once again, 
+                        making performance smooth. <br /><br />
+
+                        And finally, we have particle and sound effects. Particle effects include birds in the sky, butterflies in open fields, and airborne spores 
+                        in the woodlands. Atmospheric sound effects are dynamic and change depending on the biome you are in.<br /><br />
+
+                        Overall I am happy with my progress on this project, having never made a procedural terrain before, its interesting to see how realistic
+                        a terrain can look, even when its generated automatically without me manually placing anything, while also running smoothly at over 60fps.<br /><br /><br /><br />
+                    </p>
+
+                    <!--Source Engine Based Movement-->
+                    <h3>Source Engine Based Movement</h3>
+                    <!-- Video -->
+                        <div class="project-video-container">
+                            <video class="project-video" autoplay muted loop playsinline loading="lazy">
+                            <source src="videos/surf.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    <p>
+                        This project was designed to hone my coding skills related to the movement of a player, by attempting to emulate the movement of games made 
+                        with the Source Engine, such as Counter Strike and Half Life, which many people say has some of the most fun movement of any games.<br /><br />
+
+                        The Source Engine movement is interesting, as strafing (moving the mouse left of right, along with syncing the a and d keys with said mouse movement) 
+                        allows you to gain velocity (speed) in mid air. If you jump as soon as you hit the ground, you can carry this speed into your next jump, allowing you to chain 
+                        these jumps, and get to some very high speeds. As well as that, you can "surf" on objects that are at a certain angle, 
+                        if you hold the key that would push you towards the object, as you can see in the demonstration video. This also allows you to gain speed.<br /><br />
+
+                        I created a simple test scene to demonstrate this, complete with just a platform, and a surfable object. The first thing on the agenda was to review the Source Engine's 
+                        movement code, which luckily, is readily available and open source. Unity's default movement system is nothing like Source Engine's, but its a good base, So I used this 
+                        for our start, and modified some values such as friction and movement speed, to emulate Source's base movement more closely.<br /><br />
+
+                        Lastly I had to implement strafing and surfing mechanics, of which I just looked at the Source Engine's code, and copied these functions in Unity context in C#.<br /><br />
+
+                        Please view the demonstration video to see these mechanics in effect.<br /><br /><br /><br />
+                    </p>
+
+                    <!--Pixel Art-->
+                    <h3>Pixel Art Game</h3>
+                    <!-- Video -->
+                        <div class="project-video-container">
+                            <video class="project-video" autoplay muted loop playsinline loading="lazy">
+                            <source src="videos/pixel.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    <p>
+                        This final project was designed for me to mostly enhance my skills with Photoshop, by creating a retro-style game using hand-drawn,
+                        low resolution sprite sheets.<br /><br />
+
+                        The premise of the game is simple, you are a wandering spirit trapped in a dream world, where talking to the various NPCs in the game 
+                        would take you into their dreams. What you see in the video above, is the starting scene of the game, in where talking to the man playing 
+                        the church organ, he tells you about his most vibrant dream, and you are taken into the main world, complete with cities, towns and other areas, 
+                        all having other NPCs of which you can ask about their dreams too, which you are then taken into.<br /><br />
+
+                        This game is unfinished, but the skills I have gained via starting this project are still useful.<br /><br />
+                    </p>
                     </div>
                 </div>
 
