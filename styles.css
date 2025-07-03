@@ -644,7 +644,7 @@ header {
 
 /* When you add .show to expand: */
 .nested-content.show {
-  max-height: 200vh;   /* large enough to show any content */
+  max-height: 110vh;   /* large enough to show any content */
   opacity: 1;
   margin-top: 0.75rem;
   overflow-y: auto;
