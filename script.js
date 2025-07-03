@@ -37,6 +37,7 @@ document.querySelectorAll('.expandable-card').forEach(card => {
   header.addEventListener('click', () => {
     const isExpanded = content.classList.contains('show');
     content.classList.toggle('show');
+    
 
       // Trigger spin animation on expand
       if (!isExpanded) {
@@ -55,6 +56,32 @@ document.querySelectorAll('.expandable-card').forEach(card => {
 
     
   });
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (isTouch) {
+    // Simulate hover for mobile (only while finger is down)
+    card.addEventListener('touchstart', () => {
+      card.classList.add('hover');
+    });
+
+    card.addEventListener('touchend', () => {
+      card.classList.remove('hover');
+    });
+
+    card.addEventListener('touchcancel', () => {
+      card.classList.remove('hover');
+    });
+  } else {
+    // Normal hover for desktop
+    card.addEventListener('mouseenter', () => {
+      card.classList.add('hover');
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('hover');
+    });
+  }
+  
 });
 
 // Nested
@@ -68,7 +95,13 @@ document.querySelectorAll('.nested-card').forEach(card => {
     content.classList.toggle('show');
     btn.textContent = isOpen ? '−' : '+';
   });
+
+
+
+
 });
+
+
 
 //Video fullscreen
 document.addEventListener("DOMContentLoaded", () => {
