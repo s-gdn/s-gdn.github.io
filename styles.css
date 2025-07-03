@@ -437,7 +437,7 @@ header {
   cursor: pointer;
   background-color: var(--card-bg);
   border-radius: 1.25rem;
-  padding: 1.25rem;
+  padding: 1.25rem 0.25rem;
   color: var(--text-color);
   box-shadow: 0 0.25rem 3.125rem rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
@@ -580,11 +580,11 @@ header {
   cursor: pointer;
   background-color: var(--nested-card-bg);
   border-radius: 1.25rem;
-  padding: 1rem;
+  padding: 0.5rem;
   color: var(--text-color);
   transition: all 0.3s ease-in-out;
   margin-top: 1rem;
-
+  
   border: 1px solid var(--nested-outline); /* adjust color & opacity as needed */
 }
 
@@ -628,16 +628,26 @@ header {
 .nested-content {
   max-height: 0;
   overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.3) transparent;
+  padding: 0 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch; /* iOS momentum scroll */
+  scroll-behavior: smooth;
   opacity: 0;
   margin-top: 0;
   transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
 }
 
+
+
 /* When you add .show to expand: */
 .nested-content.show {
-  max-height: 300vh;   /* large enough to show any content */
+  max-height: 200vh;   /* large enough to show any content */
   opacity: 1;
   margin-top: 0.75rem;
+  overflow-y: auto;
 }
 
 
