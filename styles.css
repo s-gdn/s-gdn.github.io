@@ -9,6 +9,7 @@
   --card-bg: rgba(63, 63, 63, 0.4);
   --card-text: rgba(190, 190, 190, 0.616);
   --accent-color: #74b385;
+  --nested-card-bg: rgba(32, 32, 32, 0.452);
   --nested-outline: rgba(255, 255, 255, 0.822);
   --invert-value: 1;
 }
@@ -22,6 +23,7 @@ body.day-mode {
   --card-bg: rgba(199, 199, 199, 0.4);
   --card-text: rgba(0, 0, 0, 0.616);
   --accent-color: #e2963e;
+  --nested-card-bg: rgba(255, 243, 217, 0.116);
   --nested-outline: rgba(32, 32, 32, 0.822);
   --invert-value: 0;
 }
@@ -576,7 +578,7 @@ header {
 
 .nested-card {
   cursor: pointer;
-  background-color: var(--card-bg);
+  background-color: var(--nested-card-bg);
   border-radius: 1.25rem;
   padding: 1rem;
   color: var(--text-color);
@@ -605,10 +607,12 @@ header {
 .nested-title {
   flex: 1;
   text-align: center;
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
   letter-spacing: 0.2rem;
   color: var(--card-text);
   font-weight: bold;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .nested-button {
@@ -617,6 +621,7 @@ header {
   right: 0;
   font-size: 1rem;
   padding: 0.25rem 0.5rem;
+  margin-left: 1rem;
 }
 
 /* Hidden by default: */
@@ -630,7 +635,7 @@ header {
 
 /* When you add .show to expand: */
 .nested-content.show {
-  max-height: 100vh;   /* large enough to show any content */
+  max-height: 300vh;   /* large enough to show any content */
   opacity: 1;
   margin-top: 0.75rem;
 }

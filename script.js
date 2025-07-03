@@ -1,3 +1,33 @@
+// Animate bars when card expands
+function animateSkillBars() {
+  document.querySelectorAll(".skill-bar").forEach(bar => {
+    const level = parseInt(bar.dataset.level);
+    const color = getProficiencyColor(level);
+
+    let fill = bar.querySelector(".fill");
+    if (!fill) {
+      fill = document.createElement("div");
+      fill.classList.add("fill");
+      fill.style.position = "absolute";
+      fill.style.top = "0";
+      fill.style.left = "0";
+      fill.style.bottom = "0";
+      fill.style.width = `0%`;
+      fill.style.background = color;
+      fill.style.borderRadius = "inherit";
+      fill.style.transition = "width 1s ease, background 1s ease";
+      bar.appendChild(fill);
+    }
+
+    // Animate after slight delay to ensure transition
+    requestAnimationFrame(() => {
+      fill.style.width = `${level}%`;
+      fill.style.background = getProficiencyColor(level);
+    });
+  });
+}
+
+
 // === Expandable Card Logic ===
 document.querySelectorAll('.expandable-card').forEach(card => {
   card.addEventListener('click', (e) => {
@@ -86,34 +116,7 @@ function getProficiencyColor(percent) {
   }
 }
 
-// Animate bars when card expands
-function animateSkillBars() {
-  document.querySelectorAll(".skill-bar").forEach(bar => {
-    const level = parseInt(bar.dataset.level);
-    const color = getProficiencyColor(level);
 
-    let fill = bar.querySelector(".fill");
-    if (!fill) {
-      fill = document.createElement("div");
-      fill.classList.add("fill");
-      fill.style.position = "absolute";
-      fill.style.top = "0";
-      fill.style.left = "0";
-      fill.style.bottom = "0";
-      fill.style.width = `0%`;
-      fill.style.background = color;
-      fill.style.borderRadius = "inherit";
-      fill.style.transition = "width 1s ease, background 1s ease";
-      bar.appendChild(fill);
-    }
-
-    // Animate after slight delay to ensure transition
-    requestAnimationFrame(() => {
-      fill.style.width = `${level}%`;
-      fill.style.background = getProficiencyColor(level);
-    });
-  });
-}
 
 
 
