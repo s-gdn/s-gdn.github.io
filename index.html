@@ -78,12 +78,13 @@
                         <p>
                             <br />I'm a <strong>software developer from the UK</strong> with over a decade of experience — coding since childhood on a Windows XP machine. <br /><br />
                             Over the years, I've worked on a wide range of projects, both <strong>independently</strong> and <strong>collaboratively</strong> in small teams. Whether it's building tools from scratch or refining existing systems, I thrive on solving problems creatively.<br /><br />
-                            Both <strong>self-taught</strong> and <strong>college educated</strong>, deeply committed to continuous learning, and always looking for ways to sharpen my skills. My passion and dedication shows in everything I build.<br /><br />
+                            Both <strong>self-taught</strong> and <strong>college educated</strong>, deeply committed to continuous learning, and always looking for ways to sharpen my skills. My passion and dedication shows in what I build.<br /><br />
 
                             I enjoy many activities as well as coding; I've been producing music for many years, I enjoy rock-climbing, snowboarding, playing chess, and being outdoors. <br /><br />
 
                             If you need a dedicated problem solver, capable of working remote or on location, contact me at: <a href="mailto:sampgoodwin@gmail.com" target="_blank" rel="noopener noreferrer">sampgoodwin@gmail.com</a>.<br /><br />
-                        </p>        
+                        </p>  
+                        <img src="pictures/line.png" class= "line" alt="line" />      
                     </div>
                 </div>
                 <!--BOX 3-->
@@ -241,6 +242,44 @@
                         <span class="nested-button">+</span>
                     </div>
                     <div class="nested-content">
+                        <h3>Portfolio Website</h3>
+                        <p>
+                            <br />That would be the website you are currently viewing! Its published using GitHub pages, 
+                            and simply uses 1 Html file, 1 CSS file and 2 Javascript files. <br /><br />
+                            
+                            It has some cool features, the interactive birds you see in the background are from a library called VantaJS. 
+                            I had to host this library locally in a seperate JS file because it had some mobile checks that negatively affected the visuals when on mobile, so I modified the function in the 
+                            source code that checks for if the client is mobile, now both desktop and mobile look the same!<br /><br />
+
+                            The expanding boxes were created to keep the UI looking as clean as possible. They are simply stylized div boxes, with a show function that increases the max height of the box 
+                            when triggered in the Javascript.<br /><br />
+
+                            If you would like to view the source code to this website, you can here: <a href="https://github.com/s-gdn/s-gdn.github.io" target="_blank" rel="noopener noreferrer">github.com/s-gdn/s-gdn.github.io</a><br /><br />
+
+                            _______________________________________________________________________________<br /><br />
+                        </p>
+                        <h3>AI-Inbox Website</h3>
+                        <p>
+                            <br />The website I created for my AI-Inbox program is a little more complicated, its dynamic as opposed to static. 
+                            Its a Django project with a front-end UI and a back-end Database.<br /><br />
+
+                            The database is used to store user information when they register an account. It also stores their payment status, as well as site credits.<br /><br />
+
+                            The site displays differently to everyone depending on multiple factors, whether they are logged in, logged out, and their payment status. 
+                            When logged in, the website will display their username at the top.<br /><br />
+
+                            I'm using Stripe's payment API to process payments, which has been tested and is working correctly. When payment has been completed and authorized, the database field on said user's 
+                            account is updated for the time period they have paid for. <strong>PLEASE DO NOT MAKE ANY PAYMENTS TO THIS SITE</strong>. It is still very much in testing, you will receive a paid 
+                            account, but you will not be able to do anything with it yet as I need a way to host the actual program as a download. <br /><br />
+                            
+                            If you was able to access the program, you would login 
+                            with your user account from the website, and it recognises whether you are paid or not, and retrieves your credits. Credits are used for each AI generation, 
+                            and by default free users receive 50 credits.<br /><br />
+
+                            The django project is hosted on Railway.com, using a Postgres database for the backend, which has security benefits as it is free of any SQL.<br /><br />
+
+                            I cannot disclose the source code to this website, as it contains secret keys, but if you would like to view the actual website, it is here: <a href="https://ai-inbox-web-production.up.railway.app/" target="_blank" rel="noopener noreferrer">ai-inbox-web-production.up.railway.app</a><br /><br />
+                        </p>
                     </div>
                 </div>
 
@@ -250,6 +289,57 @@
                     <span class="nested-button">+</span>
                     </div>
                     <div class="nested-content">
+                        <p>
+                            <br />As well as the extensive security features I have implemented along the way for my other projects, 
+                            I have a few projects I made specifically to improve my software security knowledge.<br /><br />
+                        </p>
+                        <h3>Kernel Driver</h3>
+                        <p>
+                            <br />The goal of this project was to make a <strong>c++ kernel driver</strong> I could run in ring-0 of a windows system, in order to interact with certain 
+                            program's memory through said driver, without triggering any security measures like usermode anti-cheat systems or built in measures.<br /><br />
+
+                            A kernel driver is essentially a piece of software ran at the kernel level of an operating system, which is the most privileged and low-level part of the system.<br /><br />
+                            
+
+                            My intentions were to create a driver I could load using <strong>KDMapper</strong>, which is a readily available piece of software which 
+                            uses a vulnerable driver already signed by Windows to create our own, malicious one. Which was easy enough. I used a virtual machine when testing, ensuring my actual PC wasn't at risk.<br /><br />
+
+                            I started by setting up simple debug functions so I could debug the program along the way, and then I created the fake entry point as required by KDmapper. 
+                            Inside this function we create a new driver using <strong>IoCreateDriver(&driver_name, &driver_main)</strong>, where driver_name is just the custom name of our driver 
+                            and driver_main is our "real" entry point function.<br /><br />
+
+                            <strong>Driver_main()</strong> is used to set up the driver object, device object, symbolic link, and register handlers.<br /><br />
+
+                            The last function we need is <strong>device_control()</strong>, which is used to set up I/O control functions for: 
+                            Storing a reference to our target process (the program we want to modify), copying memory from the target process to our current process (read memory), 
+                            and finally copying memory from our current process to the target process (write memory).<br /><br />
+
+                            <strong>And without going into too much more detail, thats how the driver works! We can now utilise this by loading it with KDmapper, and then creating a usermode exe that interacts with the driver:</strong><br /><br />
+
+                            <img src="pictures/driver.png" alt="Driver files" /><br /><br />
+
+                            All thats left to do is decide what to use it for! The application I would want to exploit would have to be something with good usermode security, but no kernelmode security, 
+                            as kernelmode security can detect drivers such as the one we have created, as well as any IOCTL calls made by it. <br /><br />So I settled on Counter Strike 2, a relatively new game with a usermode anticheat.<br /><br />
+
+                            I created a new c++ project in Visual Studio, set to compile as an executable. I created functions to interact with our driver and call its read / write functions, as well as passing CS2's handle to our driver.<br /><br />
+
+                            Finally we need to find variables in the game that we want to change to our liking. Which means reverse engineering the game code. I used a powerful program called IDA pro, 
+                            which essentially disassembles binary files like .exe, .dll and .sys, and turns it into human-readble assembly code. We can use this to piece together the structure of the program. This program 
+                            in combination with others like cheat engine allow us to find the module address, offset of function from module, and offset of variable from function. 
+                            So the full absolute address of a variable ususally looks like this:<br /><br />
+
+                            <strong>(Module Address + function / structure offset + variable offset)</strong><br /><br />
+
+                            I wanted to create a cheat called a bunnyhop, which forces a jump as soon as the player touches the ground, carrying the velocity instead of slowing the player down.<br /><br />
+
+                            In order to do this we would need a couple of variables. Player state flags tell us whether the player is on the ground or in the air, and Force Jump is self explanatory. 
+                            After finding these, the rest is just the logic.<br /><br />
+                            
+                            <strong>If(read(Module + PlayerClass + PlayerFlags) == !FL_ONGROUND) & user holding the space key, then: write(dwForceJump = our custom value to initiate jump)</strong><br /><br />
+
+                            And thats all! This code runs fine, and is not detected by the games anticheat. This would be considered an external cheat, but I have also made a simple usermode internal cheat, which allows more flexibility 
+                            as you can hook the actual function in the game and modify them directly, but is less secure.
+                        </p>
                     </div>
                 </div>
 
@@ -412,7 +502,7 @@
                         </ul>
                         <h4>Security</h4>
                         <p>
-                            <br /><br />As well as the skills above, I also have sufficient knowledge in security. I know how to decompile and dissect a program
+                            <br />As well as the skills above, I also have sufficient knowledge in security. I know how to decompile and dissect a program
                             to look for vulnerabilities using various tools such as IDA Pro, dnSpy, Cheat engine and various other decompilers.<br /><br />
                             I enjoy reading about and testing various exploits in new technology, like jailbreaking iPhones, spoofing hardware information,
                             emulating RFID and NFC cards, kernel exploits, among many others. I do this to broaden my understanding of what needs to be in place for technology
@@ -425,6 +515,10 @@
                             exciting. I pursued it as early as I could in highschool, and eventually went on to do it at college, recieving an A-Level. <br /><br /> If
                             you would like to see exactly what I've worked on personally, head over to the <strong>Projects</strong> section.
                         </p>
+                        <h4>Other</h4>
+                        <p>
+                            <br />Other skills include being able to work in groups or alone (I've done both in previous jobs), able to lead, experience in many Python libraries, and I am skilled in microsoft programs like Excel and Access.
+                        </p>
                     </div>
 
                     
@@ -435,11 +529,18 @@
             <!--BOX 4-->
             <div class="expandable-card">
                 <div class="card-header">
-                    <span class="card-title">Other</span>
+                    <span class="card-title">Music</span>
                     <span class="expand-button">+</span>
                 </div>
                 <div class="card-content">
-                    <p>This is the hidden content that becomes visible when the card expands. You can put anything here: text, links, images, etc.</p>
+                    <p>
+                        <br />I have also been producing music for many years using FL-Studio.<br /><br />
+                    
+                        I have produced many genres, and worked with other artists, but most recently I have been making 90s Jungle / DnB. Here are some examples: <br /><br />
+                    </p>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1f03Th8DMkzqul5Y6snsId?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0cd2N951t9UckGFu8SLrUF?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3tIgQ9zaIeMSxMSW2qKjQg?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
             </div>
