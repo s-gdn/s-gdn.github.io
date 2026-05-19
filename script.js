@@ -1,28 +1,42 @@
-// Animate bars when card expands
 function animateSkillBars() {
   document.querySelectorAll(".skill-bar").forEach(bar => {
     const level = parseInt(bar.dataset.level);
     const color = getProficiencyColor(level);
 
     let fill = bar.querySelector(".fill");
+
     if (!fill) {
       fill = document.createElement("div");
+
       fill.classList.add("fill");
-      fill.style.position = "absolute";
-      fill.style.top = "0";
-      fill.style.left = "0";
-      fill.style.bottom = "0";
-      fill.style.width = `0%`;
-      fill.style.background = color;
-      fill.style.borderRadius = "inherit";
-      fill.style.transition = "width 1s ease, background 1s ease";
+
+      Object.assign(fill.style, {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        bottom: "0",
+        width: "0%",
+        background: color,
+        borderRadius: "inherit",
+        transition: "width 1s ease, background 1s ease"
+      });
+
       bar.appendChild(fill);
     }
 
-    // Animate after slight delay to ensure transition
+    // Reset first
+    fill.style.transition = "none";
+    fill.style.width = "0%";
+
+    // Force reflow
+    void fill.offsetWidth;
+
+    // Re-enable transition
+    fill.style.transition = "width 1s ease, background 1s ease";
+
     requestAnimationFrame(() => {
       fill.style.width = `${level}%`;
-      fill.style.background = getProficiencyColor(level);
+      fill.style.background = color;
     });
   });
 }
